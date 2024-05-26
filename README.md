@@ -91,3 +91,71 @@ sudo apt install php-fpm php-mysql
 > php-fpm : which stands for PHP FastCGI Process Manager is a web tool used for speeding up the performance of a website by handling tremendous amounts of load simultaneously.
 
 ![alt text](images/2.14.png)
+
+### Creating a Web Server Block For our Web Application
+To serve our webcontent on our webserver, we create a directory for our project inside the `/var/www/` directory.
+```
+sudo mkdir /var/www/projectlempstack 
+```
+Then we change permissions of the projectlampstack directory to the current user system
+```
+sudo chown -R $USER:$USER /var/www/projectlempstack
+```
+![alt text](images/2.15.png)
+
+Creating a configuration for our server block
+```
+sudo nano /etc/nginx/sites-available/projectlempstack
+```
+
+The following snippets represents the configuration required for our web server block to be functional
+
+```
+#/etc/nginx/sites-available/projectlempstack
+
+server {
+    listen 80;
+    server_name projectlempstack www.projectlempstack;
+    root /var/www/projectlempstack;
+
+    index index.html index.htm index.php;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+     }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+}
+```
+We then link the configuration file to the sites-enabled directory
+```
+sudo ln -s /etc/nginx/sites-available/projectlempstack /etc/nginx/sites-enabled
+```
+To test our configuration for errors we run
+```
+sudo nginx -t
+```
+![alt text](images/2.16.png)
+
+Currently our new server block has been created and configured but currently the default server block is the default block that comes with nginx install. To unlink it we 
+```
+sudo unlink /etc/sites-available/default
+```
+We then reload nginx for all configurations to take effect 
+```
+sudo reload nginx
+```
+
+Create an index.html file inside `projectlempstack` directory and write in contents to be accessed over the internet. Paste public IP address on a browser to see content.
+http://<public-ip>:80
+
+![alt text](images/2.17.png)
+
