@@ -159,3 +159,11 @@ http://<public-ip>:80
 
 ![alt text](images/2.17.png)
 
+### Serving PHP Using Nginx
+
+Create an info.php file inside the `/var/www/projectlempstack` directory.
+
+On a browser enter `http://<public-ip>/info.php`
+
+![alt text](images/2.18.png)
+
