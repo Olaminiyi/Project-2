@@ -52,3 +52,31 @@ The search failed because there was no access to our nginx webserver over the in
 When we insert our public IP address on our browser, the nginx default webpage shows up showing that the webserver block is now visible from the internet via the port 80 which was opened.
 
 ![alt text](images/2.9.png)
+
+### Installing MySQL
+
+We have succeeded in setting up our nginx webserver and ensured its accessible over the internet. Next is to install mySQL which is a relational database management server to help store data and manage content on our web application.
+
+Run `sudo apt install mysql-server`
+
+![alt text](images/2.10.png)
+
+Provide added security to our mysql server by running the code below. This script will remove some insecure default settings and lock down access to our database system.
+```
+sudo apt install mysql-secure_installation
+```
+
+![alt text](images/2.11.png)
+
+On each prompt that comes press Y , add a password and save.
+
+With mysql_server successfully configured, login into the mysql server.
+
+`sudo mysql`
+
+![alt text](images/2.12.png)
+
+To exit from the web server we enter `exit`
+
+![alt text](images/2.13.png)
+
