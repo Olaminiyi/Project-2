@@ -80,3 +80,14 @@ To exit from the web server we enter `exit`
 
 ![alt text](images/2.13.png)
 
+### Installing PHP and its Modules
+
+We use php to dynamically display contents of our webpage to users who make requests to the webserver.
+Run
+```
+sudo apt install php-fpm php-mysql
+```
+> [!NOTE]
+> php-fpm : which stands for PHP FastCGI Process Manager is a web tool used for speeding up the performance of a website by handling tremendous amounts of load simultaneously.
+
+![alt text](images/2.14.png)
