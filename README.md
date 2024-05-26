@@ -167,3 +167,54 @@ On a browser enter `http://<public-ip>/info.php`
 
 ![alt text](images/2.18.png)
 
+### Connecting PHP with MySQL and Fetching Content
+
+Login into our mysql-server 
+```
+sudo mysql
+```
+Create a new database 
+```
+CREATE DATABASE <db_name>
+```
+Create a new user and assign user a password 
+```
+CREATE USER 'db_user'@'%' IDENTIFIED WITH mysql_native_password BY 'db_password'
+```
+Grant the user permission over the created database 
+```
+GRANT ALL ON 'db_name'.* TO 'db_user'@'%'
+```
+
+`exit` from the mysql-server in which we are currently logged in as root user and then Login into mysql server using the created user.
+
+![alt text](images/2.19.jpg)
+
+Login with the newly created user
+```
+mysql -u lemp_user -p
+```
+
+![alt text](images/2.20.jpg)
+
+We create a table for the current user inside the lemp_db database and specify content parameters
+
+```
+CREATE TABLE lemp_db.todo_list(
+    item_id INT AUTO_INCREMENT,
+    content VARCHAR(255),
+    PRIMARY KEY (item_id)
+);
+```
+
+Push in contents into the table INSERT INTO lemp_db.todo_list(content) VALUES ('enter contents')
+
+![alt text](images/2.21.jpg)
+
+Create a php file `todo_list.php` in `/var/www/projectlempstack` directory and paste the following code
+
+![alt text](images/2.22.jpg)
+
+We can then access our webpage via a browser `http://<publicIP>/todo_list.php`
+
+![alt text](images/2.23.jpg)
