@@ -135,7 +135,7 @@ server {
 
 }
 ```
-We then link the configuration file to the sites-enabled directory
+We then link the configuration file to the sites-enabled directory.
 ```
 sudo ln -s /etc/nginx/sites-available/projectlempstack /etc/nginx/sites-enabled
 ```
