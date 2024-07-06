@@ -22,7 +22,7 @@ sudo apt install nginx
 ```
 ![alt text](images/2.4.png)
 
-Spin up the nginx server and ensure it automatically starts on system reboot by running the following commands
+Spin up the nginx server and ensure it automatically starts on system reboot by running the following commands.
 
 ```
 sudo systemctl start nginx
